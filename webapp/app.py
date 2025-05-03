@@ -1,6 +1,10 @@
 import os
 
 from flask import Flask
+admin_password = os.getenv("ADMIN_PASSWORD", "not-set")
+
+print("Admin Password (from env):", admin_password)
+
 
 app = Flask(__name__)
 
