@@ -23,7 +23,7 @@ pipeline {
 
     stage('Trivy Image Scan') {
       steps {
-        sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin'
+        sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin'
         sh "trivy image ${IMAGE_NAME}:${TAG}"
       }
     }
