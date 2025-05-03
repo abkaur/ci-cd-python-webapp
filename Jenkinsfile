@@ -23,7 +23,7 @@ pipeline {
 
     stage('Trivy Image Scan') {
       steps {
-        sh '''
+        sh '''#!/bin/bash
           mkdir -p ./bin
           curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b ./bin
           ./bin/trivy image ${IMAGE_NAME}:${TAG}
@@ -34,6 +34,28 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-          sh '''
-            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --
+          sh '''#!/bin/bash
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push ${IMAGE_NAME}:${TAG}
+          '''
+        }
+      }
+    }
 
+    stage('Update Deployment Repo') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+          sh '''#!/bin/bash
+            git clone https://${GIT_USER}:${GIT_PASS}@github.com/abkaur/webapp-deploy.git
+            cd webapp-deploy/k8s
+            sed -i "s|image: .*|image: abkaur95/webapp:${BUILD_NUMBER}|" deployment.yaml
+            git config user.name "Jenkins"
+            git config user.email "jenkins@ci.local"
+            git commit -am "Updated image tag to ${BUILD_NUMBER}"
+            git push
+          '''
+        }
+      }
+    }
+  }
+}
