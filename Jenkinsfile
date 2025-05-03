@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    IMAGE_NAME = "abkaur/webapp"
+    IMAGE_NAME = "abkaur95/webapp"
     TAG = "${BUILD_NUMBER}"
     DEPLOY_REPO = "https://github.com/abkaur/webapp-deploy.git"
   }
@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout App Code') {
       steps {
-        git url: 'https://github.com/abkaur/webapp.git'
+        git url: 'https://github.com/ain the bkaur/webapp.git'
       }
     }
 
