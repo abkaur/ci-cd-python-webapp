@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout App Code') {
       steps {
-        git url: 'https://github.com/ain the bkaur/webapp.git'
+        git url: 'https://github.com/abkaur/webapp.git'
       }
     }
 
@@ -41,11 +41,11 @@ pipeline {
 
     stage('Update Deployment Repo') {
       steps {
-        withCredentials([string(credentialsId: 'GITHUB_TOKEN', variable: 'TOKEN')]) {
+        withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
           sh '''
-            git clone https://${TOKEN}@github.com/abkaur/webapp-deploy.git
+            git clone https://${GIT_USER}:${GIT_PASS}@github.com/abkaur/webapp-deploy.git
             cd webapp-deploy/k8s
-            sed -i "s|image: .*|image: abkaur/webapp:${BUILD_NUMBER}|" deployment.yaml
+            sed -i "s|image: .*|image: abkaur95/webapp:${BUILD_NUMBER}|" deployment.yaml
             git config user.name "Jenkins"
             git config user.email "jenkins@ci.local"
             git commit -am "Updated image tag to ${BUILD_NUMBER}"
@@ -56,3 +56,4 @@ pipeline {
     }
   }
 }
+
