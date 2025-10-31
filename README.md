@@ -46,7 +46,9 @@ docker build -t webapp:local .
 docker run -p 8010:8010 webapp:local
 # open http://localhost:8010
 
-🧠 What I Practiced / Learned
+
+🧠 What I Practiced / Learned:
+Successfully implemented an automated end-to-end pipeline where each commit triggers quality and security scans, image build and push, manifest update, and Argo CD deployment
 
 Designing a multi-stage Jenkins pipeline with quality gates and security checks
 Automating image publishing and GitOps tag bumps
