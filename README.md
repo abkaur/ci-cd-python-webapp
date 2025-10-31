@@ -1,7 +1,7 @@
 # 🚀 CI/CD Python Web App (Jenkins → SonarQube → Trivy → Docker → Argo CD)
 
 ## 🧭 CI/CD Architecture Overview
-![CI/CD Architecture Diagram](./docs/pipeline-architecture.png)
+![CI/CD Architecture Diagram](./webapp/docs/pipeline-architecture.png)
 
 This diagram illustrates the end-to-end DevOps workflow:
 - Jenkins pulls code from GitHub and runs SonarQube + Trivy scans.  
