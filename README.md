@@ -51,13 +51,14 @@ GitHub → Jenkins → SonarQube → Trivy → DockerHub → (commit tag) → Ma
 
 ## 🧠 What I Practiced / Learned
 
-Successfully implemented an automated end-to-end pipeline where each commit triggers quality and security scans, image build and push, manifest update, and Argo CD deployment
+Successfully implemented an automated end-to-end pipeline where each commit triggers quality and security scans, image build and push, manifest update, and Argo CD deployment.
 
--Designing a multi-stage Jenkins pipeline with quality gates and security checks
--Automating image publishing and GitOps tag bumps
--How Argo CD continuously deploys from a manifests repo
--Reading and editing basic K8s manifests (Deployment, Service)
+- **Designed** a multi-stage Jenkins pipeline with quality gates and security checks  
+- **Automated** image publishing and GitOps-based tag updates  
+- **Configured** Argo CD for continuous deployment from a manifests repository  
+- **Edited and managed** Kubernetes manifests (Deployment and Service)  
+- **Improved understanding** of integrating DevOps tools for full CI/CD automation  
 
-"Originally forked from a training sample, but I customized the pipeline, added scanning, and implemented a GitOps flow with a separate manifests repository."
+> *Originally forked from a training sample, but I customized the pipeline, added scanning, and implemented a GitOps flow with a separate manifests repository.*
 
 
