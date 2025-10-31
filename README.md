@@ -49,7 +49,8 @@ GitHub → Jenkins → SonarQube → Trivy → DockerHub → (commit tag) → Ma
 - `MANIFESTS_REPO=https://github.com/abkaur/ci-cd-k8s-manifests.git`
 - `MANIFESTS_PATH=k8s/deployment.yaml`
 
-🧠 What I Practiced / Learned:
+## 🧠 What I Practiced / Learned
+
 Successfully implemented an automated end-to-end pipeline where each commit triggers quality and security scans, image build and push, manifest update, and Argo CD deployment
 
 -Designing a multi-stage Jenkins pipeline with quality gates and security checks
