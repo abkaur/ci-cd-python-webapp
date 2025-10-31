@@ -1,5 +1,15 @@
 # 🚀 CI/CD Python Web App (Jenkins → SonarQube → Trivy → Docker → Argo CD)
 
+## 🧭 CI/CD Architecture Overview
+![CI/CD Architecture Diagram](./docs/pipeline-architecture.png)
+
+This diagram illustrates the end-to-end DevOps workflow:
+- Jenkins pulls code from GitHub and runs SonarQube + Trivy scans.  
+- Docker builds and pushes the image to Docker Hub.  
+- Jenkins updates the manifests repo, triggering Argo CD to sync changes.  
+- Argo CD deploys the updated application to the Kubernetes cluster.
+
+
 This repository contains a Python sample web application plus a Jenkins pipeline that:
 1) builds and tests the app with Docker,
 2) runs **SonarQube** (code quality) and **Trivy** (image vulnerability) scans,
