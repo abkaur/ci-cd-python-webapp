@@ -49,7 +49,6 @@ GitHub → Jenkins → SonarQube → Trivy → DockerHub → (commit tag) → Ma
 - `MANIFESTS_REPO=https://github.com/abkaur/ci-cd-k8s-manifests.git`
 - `MANIFESTS_PATH=k8s/deployment.yaml`
 
-```markdown
 ## 🧪 Local Run (optional)
 
 ```bash
