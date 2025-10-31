@@ -59,6 +59,8 @@ Successfully implemented an automated end-to-end pipeline where each commit trig
 - **Edited and managed** Kubernetes manifests (Deployment and Service)  
 - **Improved understanding** of integrating DevOps tools for full CI/CD automation  
 
-> *Originally forked from a training sample, but I customized the pipeline, added scanning, and implemented a GitOps flow with a separate manifests repository.*
+💬 **Developer Note:**  
+Originally forked from a training sample, but I customized the pipeline, added scanning, and implemented a GitOps flow with a separate manifests repository.
+
 
 
