@@ -49,15 +49,6 @@ GitHub → Jenkins → SonarQube → Trivy → DockerHub → (commit tag) → Ma
 - `MANIFESTS_REPO=https://github.com/abkaur/ci-cd-k8s-manifests.git`
 - `MANIFESTS_PATH=k8s/deployment.yaml`
 
-## 🧪 Local Run (optional)
-
-```bash
-docker build -t webapp:local .
-docker run -p 8010:8010 webapp:local
-# open http://localhost:8010
-
-
-
 🧠 What I Practiced / Learned:
 Successfully implemented an automated end-to-end pipeline where each commit triggers quality and security scans, image build and push, manifest update, and Argo CD deployment
 
