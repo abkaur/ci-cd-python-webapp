@@ -3,12 +3,11 @@
 ## 🧭 CI/CD Architecture Overview
 ![CI/CD Architecture Diagram](./webapp/docs/pipeline-architecture.png)
 
-This diagram illustrates the end-to-end DevOps workflow:
-- Jenkins pulls code from GitHub and runs SonarQube + Trivy scans.  
-- Docker builds and pushes the image to Docker Hub.  
-- Jenkins updates the manifests repo, triggering Argo CD to sync changes.  
-- Argo CD deploys the updated application to the Kubernetes cluster.
+This architecture diagram represents the complete CI/CD pipeline for automating the build, scan, and deployment of a Python-based web application using industry-standard DevOps tools. The pipeline begins when Jenkins fetches the latest source code from GitHub and performs quality and security checks using SonarQube and Trivy. Once verified, Jenkins builds a Docker image and pushes it to Docker Hub, ensuring version-controlled container storage. The updated image tag is then committed to a separate Kubernetes manifests repository, which is continuously monitored by Argo CD. Upon detecting changes, Argo CD automatically synchronizes the deployment with the Kubernetes cluster, rolling out the latest application version seamlessly. This approach follows a GitOps workflow — where the entire release process, from code commit to production deployment, is automated, auditable, and consistent across environments.
 
+In short, code changes trigger Jenkins → quality checks → Docker build → GitOps update → Argo CD deployment on Kubernetes.
+
+## 📦 Project Overview
 
 This repository contains a Python sample web application plus a Jenkins pipeline that:
 1) builds and tests the app with Docker,
@@ -60,11 +59,11 @@ docker run -p 8010:8010 webapp:local
 🧠 What I Practiced / Learned:
 Successfully implemented an automated end-to-end pipeline where each commit triggers quality and security scans, image build and push, manifest update, and Argo CD deployment
 
-Designing a multi-stage Jenkins pipeline with quality gates and security checks
-Automating image publishing and GitOps tag bumps
+-Designing a multi-stage Jenkins pipeline with quality gates and security checks
+-Automating image publishing and GitOps tag bumps
+-How Argo CD continuously deploys from a manifests repo
+-Reading and editing basic K8s manifests (Deployment, Service)
 
-How Argo CD continuously deploys from a manifests repo
+"Originally forked from a training sample, but I customized the pipeline, added scanning, and implemented a GitOps flow with a separate manifests repository."
 
-Reading and editing basic K8s manifests (Deployment, Service)
 
-Originally forked from a training sample. I customized the pipeline, added scanning, and implemented a GitOps flow with a separate manifests repository.
